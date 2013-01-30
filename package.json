@@ -1,0 +1,25 @@
+{
+    "name": "Webnode",
+    "description": "An Web Framework Arch based on Express",
+    "version": "1.0.0",
+    "keywords": [
+        "Web",
+        "Framework"
+    ],
+    "dependencies": {
+        "express": "*",
+        "restify" : "*",
+        "bunyan" : "*",
+        "commander" : "*",
+        "sequelize" : "*",
+        "inflector" : "*"
+    },
+    "main": "index",
+    "bin": "./bin/webnode",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.webnode.com/licenses/mit.html"
+        }
+    ]
+}
