@@ -39,9 +39,48 @@ switch(verb) {
         });
         break;
     case 'init':
-        var boilerplate = program.boilerplate || 'coffee-script';
+        var boilerplate = program.boilerplate || 'coffee-script',
+            project_name = program.args[1],
+            boilerplate_path = module_dir + 'boilerplate/' + boilerplate;
         //console.log('cp -r ' + module_dir + 'boilerplate/' + boilerplate + '/*' + ' ' + cwd);
-        exec('cp -r ' + module_dir + 'boilerplate/' + boilerplate + '/*' + ' ' + cwd);
+        console.log('initializing...');
+        exec('cp -r ' + boilerplate_path + '/*' + ' ' + cwd, function(err, stdout, stderr) {
+            console.log('project file created.');
+            if (!stderr) {
+                if (project_name) {
+                    var package_json = require(boilerplate_path + '/package');
+                    package_json.name = project_name;
+                    exec('echo \'' + JSON.stringify(package_json, null, '\t') + '\' > ' + cwd + '/package.json', function(err, stdout, stderr) {
+                        console.log('package.json created');
+                        if (stderr) {
+                            console.log(stderr);
+                        } else {
+                            console.log('installing packages...');
+                            // install package
+                            exec('npm install', function(err, stdout, stderr) {
+                                console.log(stdout);
+                                if (stderr) {
+                                    console.log(stderr);
+                                }
+                                console.log('project created.');
+                            });
+                        }
+                    });
+                } else {
+                    console.log('installing packages...');
+                    // install package
+                    exec('npm install', function(err, stdout, stderr) {
+                        console.log(stdout);
+                        if (stderr) {
+                            console.log(stderr);
+                        }
+                        console.log('project created.');
+                    });
+                }
+            } else {
+                console.log(stderr);
+            }
+        });
         break;
     default:
         console.log('undefined verb.');

@@ -1,0 +1,10 @@
+{
+    "name": "webnode-app",
+    "version": "1.0.0",
+    "dependencies": {
+        "coffee-script" : "*",
+        "webnode": "*",
+        "should" : "*",
+        "supertest" : "*"
+    }
+}
