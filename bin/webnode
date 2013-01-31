@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 var cwd     = process.cwd(), verb,
+    module_dir = __dirname + '/../',
     path    = require('path'),
     options = [],
+    FS      = require('fs'),
     program = require('commander'),
     exec    = require('child_process').exec,
     bin_mocha = __dirname + '/../node_modules/.bin/mocha';
@@ -9,6 +11,7 @@ var cwd     = process.cwd(), verb,
 program
     .version('1.0.0')
     .option('-c --compiler [value]', 'compilers to specific, defaut is coffee-script')
+    .option('-b --boilerplate [value]', 'boilerplate to specific, defaut is coffee-script')
     .option('-R --reporter [value]', 'specify the reporter to use')
     .parse(process.argv);
 
@@ -24,16 +27,23 @@ if (program.reporter) {
     options.push('-R spec');
 }
 
-if (verb == 'test') {
-    exec(bin_mocha + ' ' + options.join(' ') + ' ' + cwd + '/test', function(err, stdout, stderr) {
-        if (stderr) {
-            console.log(stderr);
-        }
-        if (stdout) {
-            console.log(stdout);
-        }
-    });
-} else {
-    console.log('Undefined verb.');
+switch(verb) {
+    case 'test':
+        exec(bin_mocha + ' ' + options.join(' ') + ' ' + cwd + '/test', function(err, stdout, stderr) {
+            if (stderr) {
+                console.log(stderr);
+            }
+            if (stdout) {
+                console.log(stdout);
+            }
+        });
+        break;
+    case 'init':
+        var boilerplate = program.boilerplate || 'coffee-script';
+        //console.log('cp -r ' + module_dir + 'boilerplate/' + boilerplate + '/*' + ' ' + cwd);
+        exec('cp -r ' + module_dir + 'boilerplate/' + boilerplate + '/*' + ' ' + cwd);
+        break;
+    default:
+        console.log('undefined verb.');
 }
 
