@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+var cwd     = process.cwd(), verb,
+    path    = require('path'),
+    options = [],
+    program = require('commander'),
+    exec    = require('child_process').exec,
+    bin_mocha = __dirname + '/../node_modules/.bin/mocha';
+
+program
+    .version('1.0.0')
+    .option('-c --compiler [value]', 'compilers to specific, defaut is coffee-script')
+    .option('-R --reporter [value]', 'specify the reporter to use')
+    .parse(process.argv);
+
+verb = program.args[0];
+
+if (program.compiler) {
+    options.push('--compilers ' + program.compiler);
+}
+
+if (program.reporter) {
+    options.push('-R ' + program.reporter);
+} else {
+    options.push('-R spec');
+}
+
+if (verb == 'test') {
+    exec(bin_mocha + ' ' + options.join(' ') + ' ' + cwd + '/test', function(err, stdout, stderr) {
+        if (stderr) {
+            console.log(stderr);
+        }
+        if (stdout) {
+            console.log(stdout);
+        }
+    });
+} else {
+    console.log('Undefined verb.');
+}
+

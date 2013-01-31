@@ -7,11 +7,12 @@
         "Framework"
     ],
     "dependencies": {
-        "express": "*",
         "restify" : "*",
         "bunyan" : "*",
         "commander" : "*",
         "sequelize" : "*",
+        "mocha"     : "*",
+        "should"     : "*",
         "inflector" : "*"
     },
     "main": "index",
