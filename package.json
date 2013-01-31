@@ -1,6 +1,6 @@
 {
-    "name": "Webnode",
-    "description": "An Web Framework Arch based on Express",
+    "name": "webnode",
+    "description": "RESTful web service framework on top of Restify",
     "version": "1.0.0",
     "keywords": [
         "Web",
