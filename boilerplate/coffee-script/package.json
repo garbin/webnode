@@ -5,6 +5,7 @@
         "coffee-script" : "*",
         "webnode": "*",
         "should" : "*",
+        "sequelize" : "*",
         "supertest" : "*"
     }
 }
