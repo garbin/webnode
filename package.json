@@ -1,26 +1,27 @@
 {
-    "name": "webnode",
-    "description": "RESTful web service framework on top of Restify",
-    "version": "1.0.2",
-    "keywords": [
-        "Web",
-        "Framework"
-    ],
-    "dependencies": {
-        "restify" : "",
-        "bunyan" : "*",
-        "commander" : "*",
-        "sequelize" : "*",
-        "mocha"     : "*",
-        "should"     : "*",
-        "inflector" : "*"
-    },
-    "main": "index",
-    "bin": "./bin/webnode",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://www.webnode.com/licenses/mit.html"
-        }
-    ]
+  "name": "webnode",
+  "description": "RESTful web service framework on top of Restify",
+  "version": "1.0.2",
+  "keywords": [
+    "Web",
+    "Framework"
+  ],
+  "dependencies": {
+    "restify": "",
+    "bunyan": "*",
+    "commander": "*",
+    "sequelize": "*",
+    "mocha": "*",
+    "should": "*",
+    "inflector": "*",
+    "sync": "~0.2.2"
+  },
+  "main": "index",
+  "bin": "./bin/webnode",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.webnode.com/licenses/mit.html"
+    }
+  ]
 }
