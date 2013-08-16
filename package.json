@@ -1,7 +1,7 @@
 {
   "name": "webnode",
   "description": "RESTful web service framework on top of Restify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "Web",
     "Framework"
