@@ -10,6 +10,7 @@
     "restify": "",
     "bunyan": "*",
     "commander": "*",
+    "mysql": "*",
     "sequelize": "*",
     "mocha": "*",
     "should": "*",
